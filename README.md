@@ -383,8 +383,18 @@ La red implementará **PAM-4** en enlaces cableados (Ethernet y fibra óptica) p
 # Configuración de Rutas Óptimas y Enrutamiento por Inundación para Contingencias
 
 ## Rutas Óptimas Calculadas (Dijkstra)
-
----
+```
+       (Sede 1)
+         ●
+        / \
+   10ms/   \5ms
+      /     \
+     ●------●
+ (Sede 3)   (Sede 2)
+      \     /
+   3ms \   / 
+        ●
+```        
 
 Como podemos observar, la ruta óptima para ir de la sede 1 a la sede 3 sería pasando por la sede 2, ya que nos dejaría 8 ms (3 ms + 5 ms), a diferencia de ir por la ruta directa, que serían 10 ms.
 
