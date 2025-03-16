@@ -1,6 +1,8 @@
 # CFI-Tema-1-Redes
 # Red del Sistema de Videoconferencia
 Una empresa multinacional desea implementar un sistema de videoconferencia para conectar sus oficinas en diferentes ciudades. Este sistema debe garantizar la transmisión de video en alta definición en tiempo real, integrar dispositivos IoT (como cámaras inteligentes y sistemas de audio en las salas de reuniones) y ofrecer altos niveles de seguridad para proteger el tráfico contra amenazas y accesos no autorizados.
+## 1.2 Diseño Lógico de la red
+### Diagrama conceptual
 ```
                     +----------------------+
                     |    Protocolo MPLS    |
@@ -82,11 +84,11 @@ Inmediatamente de la zona desmilitarizada, se encuentra un firewall interno de l
 
 Seguido de estos firewalls se encuentra la red interna, en la cual se encontrará un switch central que se distribuye la conexión a cada segmento de la sede, como el switch de los servidores archivo, administración, videoconferencia y monitoreo o los switches que conectan con los ordenadores, cámaras, proyectores, altavoces e impresora. En cuanto a la estructura de cableado todo está compuesto de fibra hasta los switches, después a partir de cada switch de cada apartado y sus componentes está compuesto de cable recto ethernet, Cat 6a debido a que el Cat 7 es parecido, pero más costoso.  
 
-## Dispositivos Utilizados  
+### Dispositivos Utilizados  
 
 A continuación, se describe los componentes de la red en detalle, como los routers, firewalls, switches, servidores y el cableado, así como los protocolos de seguridad implementados para proteger y optimizar la transmisión de datos entre las sedes.  
 
-### Router: Cisco ISR 4331  
+#### Router: Cisco ISR 4331  
 
 Se ha seleccionado este modelo ya que gestiona múltiples sucursales, actúa como router de borde MPLS de tal forma que inicia y finaliza las etiquetas MPLS de los paquetes que entran y salen de la red. Además, permite la optimización de tráfico y firewall integrado.  
 
@@ -96,7 +98,7 @@ Con precio aproximado entre $2,500 - $3,500 USD, cuenta con las siguientes espec
 - Se evitan pérdidas de paquetes y latencia.  
 - Se facilita la administración y escalabilidad al permitir módulos de expansión.  
 
-### Switch: Cisco 3650-24PS  
+#### Switch: Cisco 3650-24PS  
 
 Este modelo de switch se ha seleccionado por su capacidad para manejar altos volúmenes de tráfico, compatibilidad con VLANs y soporte para alimentación PoE+, permitiendo la conexión de dispositivos como teléfonos IP y puntos de acceso Wi-Fi.  
 
@@ -106,7 +108,7 @@ Con precio aproximado entre $2,000 - $3,000 USD, cuenta con las siguientes espec
 - Evita cuellos de botella en la transmisión de datos.  
 - Impide interferencia y latencia de red.  
 
-### Firewall: Cisco Firepower 2140  
+#### Firewall: Cisco Firepower 2140  
 
 Se ha elegido este firewall debido a su alto rendimiento en la inspección de tráfico, su capacidad para detectar amenazas y herramientas de ciberseguridad avanzada. Sumado a esto disponemos del Firewall FortiGate 200F que complementa al Cisco Firepower 2140 brindando una seguridad multicapa, seguridad avanzada, inspección de tráfico y control de amenazas en redes empresariales.  
 
@@ -116,7 +118,7 @@ Con precio aproximado entre $41.200 - $48,000 USD para el Cisco Firepower 2140 y
 - Protege contra intrusiones y ataques cibernéticos dirigidos a la infraestructura de la empresa.  
 - Se evitan problemas de fuga de información o ataques de malware en las comunicaciones.  
 
-### Cableado: Cat 6A y Fibra Óptica  
+#### Cableado: Cat 6A y Fibra Óptica  
 
 El cableado Cat 6A se usa dentro de cada edificio para conectar dispositivos finales a los switches, mientras que la fibra óptica se emplea en enlaces troncales entre pisos y sedes debido a su alta capacidad y baja latencia.  
 
