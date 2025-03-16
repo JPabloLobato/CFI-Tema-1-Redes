@@ -136,6 +136,30 @@ Este módulo proporciona internet a la red internaç
 ````
 Este módulo contiene servidore y tambien protege a la red interna de posibles amenazas
 
+#### Módulo Red interna
+
+````
+             v
+                    +-----------------+
+                    | Red Interna      |
+                    +-----------------+
+                              |
+                              v
++-----------------------------------------------------------------------------------------+
+|   Switch Central (Distribuye la conexión)                                               |
++-----------------------------------------------------------------------------------------+
+                            |                                                         |
+                            v                                                         |
++------------------------------------------------------------------+                  |
+|                     Switch  (Sala de servidores)                 |                  |
++------------------------------------------------------------------+                  |
+                                                                                      |
+                                                                                      v
++-------------------------------------------------------------------------------------------------------------------+       
+|       Switch (Red de Equipos por Plantas)                                                                         |
++-------------------------------------------------------------------------------------------------------------------+
+````
+Aqui la red interna donde se distribuye la información filtrada de internet
 
 ### Dispositivos Utilizados  
 
