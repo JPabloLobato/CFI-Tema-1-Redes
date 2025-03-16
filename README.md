@@ -205,6 +205,20 @@ Aqui la red interna donde se distribuye la información filtrada de internet
 ````
 Este módulo contiene los dispositivos de cada planta
 
+#### Módulo servidores internos
+````
++------------------------------------------------------------------+                  
+|                     Switch  (Sala de servidores)                 |                  
++------------------------------------------------------------------+                  
+       |               |                        |               |                     
+       v               v                        v               v                     
++----------------+  +----------------+  +----------------+  +----------------+        
+|  Servidor      |  |  Servidor       |  |  Servidor     |  |  Servidor      |        
+|  Archivos      |  |  Administración |  |  Videoconf.   |  |  Monitoreo     |        
++----------------+  +----------------+  +----------------+  +----------------+        
+````
+Este módulo ajola los servidores internos de la red.
+
 ### Dispositivos Utilizados  
 
 A continuación, se describe los componentes de la red en detalle, como los routers, firewalls, switches, servidores y el cableado, así como los protocolos de seguridad implementados para proteger y optimizar la transmisión de datos entre las sedes.  
