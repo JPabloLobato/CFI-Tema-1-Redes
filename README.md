@@ -328,6 +328,63 @@ Con precio aproximado entre $0.25 - $1.00 USD por metro para el cableado Cat 6A 
 
 
 
+# Configuración de Rutas Óptimas y Enrutamiento por Inundación para Contingencias
+
+## Rutas Óptimas Calculadas (Dijkstra)
+
+---
+
+Como podemos observar, la ruta óptima para ir de la sede 1 a la sede 3 sería pasando por la sede 2, ya que nos dejaría 8 ms (3 ms + 5 ms), a diferencia de ir por la ruta directa, que serían 10 ms.
+
+## Configuración del Enrutamiento por Inundación para Contingencias
+
+El enrutamiento por inundación (flooding) se utiliza en contingencias cuando los protocolos de enrutamiento fallan. Consiste en enviar los paquetes por todas las rutas posibles, asegurando su entrega si existe un camino disponible. Aunque garantiza conectividad, genera un alto tráfico y consumo de recursos, por lo que se limita a casos como descubrimiento de rutas o recuperación tras fallos. Para evitar congestión, se implementan mecanismos como TTL o filtrado de paquetes duplicados.
+
+### Pasos para Configurar el Enrutamiento por Inundación
+
+#### 1. Habilitar el reenvío de paquetes en los routers
+Se activa la opción de reenvío de paquetes para permitir la transmisión a múltiples interfaces:
+```bash
+conf t
+ip forwarding
+exit
+```
+
+#### 2. Configurar las interfaces de red
+Se asignan direcciones IP y se habilitan las interfaces para enviar paquetes en todas direcciones posibles:
+```bash
+interface GigabitEthernet0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+```
+Repite este paso para cada interfaz conectada.
+
+#### 3. Implementar rutas estáticas de respaldo
+Para mejorar la eficiencia, se configuran rutas estáticas en caso de fallo:
+```bash
+ip route 0.0.0.0 0.0.0.0 192.168.1.2
+ip route 0.0.0.0 0.0.0.0 192.168.2.2
+```
+Esto enviará los paquetes a todas las posibles rutas disponibles.
+
+#### 4. Configurar enrutamiento de contingencia (Flooding manual con ACLs y PBR)
+Si el protocolo de enrutamiento principal falla, puedes forzar la inundación con listas de control de acceso y políticas de reenvío:
+```bash
+access-list 101 permit ip any any
+route-map Flood permit 10
+ match ip address 101
+ set interface GigabitEthernet0/1 GigabitEthernet0/2
+```
+Esto permite que los paquetes se envíen por múltiples interfaces en caso de fallo.
+
+### ¿Cuándo se debe utilizar?
+
+- En caso de que un enlace principal falle y sea necesario enviar tráfico por cada una de las rutas posibles.
+- En redes pequeñas o incluso de emergencia, especialmente si otros protocolos de enrutamiento pueden tardar en converger.
+- Como medida de contingencia en redes críticas (bancos, hospitales, etc.).
+- Se debe tener en cuenta que la inundación genera una gran sobrecarga, por lo que no es ideal en redes de gran tamaño.
+
 
 
 
