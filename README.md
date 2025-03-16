@@ -445,7 +445,7 @@ Esto permite que los paquetes se envíen por múltiples interfaces en caso de fa
 - En caso de que un enlace principal falle y sea necesario enviar tráfico por cada una de las rutas posibles.
 - En redes pequeñas o incluso de emergencia, especialmente si otros protocolos de enrutamiento pueden tardar en converger.
 - Como medida de contingencia en redes críticas (bancos, hospitales, etc.).
-- Se debe tener en cuenta que la inundación genera una gran sobrecarga, por lo que no es ideal en redes de gran tamaño.
+Se debe tener en cuenta que la inundación genera una gran sobrecarga, por lo que no es ideal en redes de gran tamaño.
 
 
 
