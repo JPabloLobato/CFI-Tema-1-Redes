@@ -1,5 +1,6 @@
 # CFI-Tema-1-Redes
 # Red del Sistema de Videoconferencia
+Una empresa multinacional desea implementar un sistema de videoconferencia para conectar sus oficinas en diferentes ciudades. Este sistema debe garantizar la transmisión de video en alta definición en tiempo real, integrar dispositivos IoT (como cámaras inteligentes y sistemas de audio en las salas de reuniones) y ofrecer altos niveles de seguridad para proteger el tráfico contra amenazas y accesos no autorizados.
 ```
                     +----------------------+
                     |    Protocolo MPLS    |
