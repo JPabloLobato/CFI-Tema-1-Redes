@@ -88,6 +88,7 @@ Seguido de estos firewalls se encuentra la red interna, en la cual se encontrar√
 ### M√≥dulos
 
 #### Conectividad externa
+...
                     +----------------------+
                     |    Protocolo MPLS    |
                     +----------------------+
@@ -96,6 +97,7 @@ Seguido de estos firewalls se encuentra la red interna, en la cual se encontrar√
 +------------------+        +------------------+
 |     Internet     | -----> |  Router ISR 4331 |
 +------------------+        +------------------+
+...
 Este m√≥dulo proporciona internet a la red interna
 
 
