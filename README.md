@@ -101,7 +101,40 @@ Seguido de estos firewalls se encuentra la red interna, en la cual se encontrar�
 -------------------------------------------------------------
 ````
 
-Este módulo proporciona internet a la red interna
+Este módulo proporciona internet a la red internaç
+
+#### Módulo Zona DMZ + Servidores
+````
+                      +--------------------+
+                      | Firewall Perimetral|
+                      | Cisco Firepower1010|
+                      +--------------------+
+                              |
+                              v
+                      +-------------------+
+                      |  Switch Cisco     |
+                      |  3650-24PS (DMZ)  |
+                      +-------------------+
+                              |
+       --------------------------------------------------------------------------------------------------------
+       |                   |                 |                  |                   |                         |
+       v                   v                 v                  v                   v                         v                         
++----------------+  +----------------+  +--------------+  +--------------+   +------------------+     +----------------+
+| Servidor Correo|  | Servidor Proxy |  | Servidor DNS |  | Servidor DHCP|   | Servidores Video |     |  Servidor Web  |
++----------------+  +----------------+  +--------------+  +--------------+   |    Llamadas      |     +----------------+
+                                                                             +------------------+
+    
+
+                             |
+                             v
+              +----------------------------------+
+              |    Firewalls Internos            |
+              | +---------------------------- +  |
+              | | Cisco Firepower 2140        |  |
+              | | SonicWall TZ270W (backup)   |  |
+              +----------------------------------+
+````
+Este módulo contiene servidore y tambien protege a la red interna de posibles amenazas
 
 
 ### Dispositivos Utilizados  
