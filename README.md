@@ -129,6 +129,87 @@ Con precio aproximado entre $0.25 - $1.00 USD por metro para el cableado Cat 6A 
 - Mejora la velocidad y estabilidad de la red.  
 - Reduce la latencia en la transmisión de datos, fundamental para la videoconferencia.  
 - Se protege en caso de interferencias electromagnéticas en redes de cobre tradicionales.  
-- Se evita pérdida de señal en largas distancias, solucionado con fibra óptica.  
+- Se evita pérdida de señal en largas distancias, solucionado con fibra óptica.
+
+
+## 3. Capa de Red – Direccionamiento y Enrutamiento
+
+### 3.1 Esquema de Direccionamiento IP y Subneteo
+
+#### Esquema de Direccionamiento para las Sedes
+
+| Sede  | Red principal |
+|--------|----------------|
+| Sede 1 | 192.168.10.0/23 |
+| Sede 2 | 192.168.20.0/23 |
+| Sede 3 | 192.168.30.0/23 |
+
+---
+
+### Sede 1 - 192.168.10.0/23
+
+| VLAN  | Descripción | Red | Máscara | Host  | Gateway |
+|-------|------------|-----|---------|------|---------|
+| VLAN10 | Recepción | 192.168.10.0/28 | 255.255.255.240 | 14 | 192.168.10.1 |
+| VLAN20 | Planta 1 | 192.168.10.16/26 | 255.255.255.192 | 62 | 192.168.10.17 |
+| VLAN30 | Planta 2 | 192.168.10.80/26 | 255.255.255.192 | 62 | 192.168.10.81 |
+| VLAN40 | Planta 3 | 192.168.10.144/26 | 255.255.255.192 | 62 | 192.168.10.145 |
+| VLAN50 | Planta 4 | 192.168.11.0/26 | 255.255.255.192 | 62 | 192.168.11.1 |
+| VLAN60 | Planta 5 | 192.168.11.64/26 | 255.255.255.192 | 62 | 192.168.11.65 |
+| VLAN70 | Planta 6 | 192.168.11.128/26 | 255.255.255.192 | 62 | 192.168.11.129 |
+| VLAN80 | Servidores Int. | 192.168.11.192/24 | 255.255.255.0 | 254 | 192.168.11.193 |
+
+---
+
+### Sede 2 - 192.168.20.0/23
+
+| VLAN  | Descripción | Red | Máscara | Host  | Gateway |
+|-------|------------|-----|---------|------|---------|
+| VLAN10 | Recepción | 192.168.20.0/28 | 255.255.255.240 | 14 | 192.168.20.1 |
+| VLAN20 | Planta 1 | 192.168.20.16/26 | 255.255.255.192 | 62 | 192.168.20.17 |
+| VLAN30 | Planta 2 | 192.168.20.80/26 | 255.255.255.192 | 62 | 192.168.20.81 |
+| VLAN40 | Planta 3 | 192.168.20.144/26 | 255.255.255.192 | 62 | 192.168.20.145 |
+| VLAN50 | Planta 4 | 192.168.21.0/26 | 255.255.255.192 | 62 | 192.168.21.1 |
+| VLAN60 | Planta 5 | 192.168.21.64/26 | 255.255.255.192 | 62 | 192.168.21.65 |
+| VLAN70 | Planta 6 | 192.168.21.128/26 | 255.255.255.192 | 62 | 192.168.21.129 |
+| VLAN80 | Servidores Int. | 192.168.21.192/24 | 255.255.255.0 | 254 | 192.168.21.193 |
+
+---
+
+### Sede 3 - 192.168.30.0/23
+
+| VLAN  | Descripción | Red | Máscara | Host  | Gateway |
+|-------|------------|-----|---------|------|---------|
+| VLAN10 | Recepción | 192.168.30.0/28 | 255.255.255.240 | 14 | 192.168.30.1 |
+| VLAN20 | Planta 1 | 192.168.30.16/26 | 255.255.255.192 | 62 | 192.168.30.17 |
+| VLAN30 | Planta 2 | 192.168.30.80/26 | 255.255.255.192 | 62 | 192.168.30.81 |
+| VLAN40 | Planta 3 | 192.168.30.144/26 | 255.255.255.192 | 62 | 192.168.30.145 |
+| VLAN50 | Planta 4 | 192.168.31.0/26 | 255.255.255.192 | 62 | 192.168.31.1 |
+| VLAN60 | Planta 5 | 192.168.31.64/26 | 255.255.255.192 | 62 | 192.168.31.65 |
+| VLAN70 | Planta 6 | 192.168.31.128/26 | 255.255.255.192 | 62 | 192.168.31.129 |
+| VLAN80 | Servidores Int. | 192.168.31.192/24 | 255.255.255.0 | 254 | 192.168.31.193 |
+
+---
+
+### Cálculo con ejemplo de la Sede 1
+
+- **Dirección base de la sede 1:** 192.168.10.0/23
+- **Rango:** 192.168.10.0 - 192.168.11.255
+- **512 direcciones en total, que se reparten entre las VLANs.**
+
+**División de las VLANs, con diferentes máscaras:**
+- **Recepción:** /28 → 16 direcciones (-2 hosts) → 14 hosts: 192.168.10.0/28
+- **Cada planta:** /26 → 64 direcciones (-2 hosts) → 62 hosts: 192.168.10.16/26, 192.168.10.80/26, etc…
+- **Servidores:** /29 → 8 direcciones (-2 hosts) → 6 hosts: 192.168.11.192/29
+
+**Otras explicaciones:**
+
+- Las máscaras de VLAN20-VLAN70 serán de **255.255.255.192** a pesar del desperdicio de direcciones, ya que se ha decidido dejar margen para futuras expansiones.
+- VLAN10 tiene **255.255.255.240** debido a que en la recepción habrá menos dispositivos.
+- VLAN80, donde se alojan los servidores internos, usa **255.255.255.248**, ya que solo serán necesarios 4 direccionamientos, dejando también un pequeño margen para futuras expansiones.
+
+
+
+
 
 
