@@ -87,6 +87,18 @@ Seguido de estos firewalls se encuentra la red interna, en la cual se encontrar�
 
 ### Módulos
 
+#### Conectividad externa
+                    +----------------------+
+                    |    Protocolo MPLS    |
+                    +----------------------+
+                              |
+                              v
++------------------+        +------------------+
+|     Internet     | -----> |  Router ISR 4331 |
++------------------+        +------------------+
+Este módulo proporciona internet a la red interna
+
+
 ### Dispositivos Utilizados  
 
 A continuación, se describe los componentes de la red en detalle, como los routers, firewalls, switches, servidores y el cableado, así como los protocolos de seguridad implementados para proteger y optimizar la transmisión de datos entre las sedes.  
