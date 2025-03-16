@@ -1,6 +1,34 @@
 # CFI-Tema-1-Redes
 # Red del Sistema de Videoconferencia
 Una empresa multinacional desea implementar un sistema de videoconferencia para conectar sus oficinas en diferentes ciudades. Este sistema debe garantizar la transmisión de video en alta definición en tiempo real, integrar dispositivos IoT (como cámaras inteligentes y sistemas de audio en las salas de reuniones) y ofrecer altos niveles de seguridad para proteger el tráfico contra amenazas y accesos no autorizados.
+## 1. Diseño de Arquitectura (Modelos OSI/TCP‑IP y Comunicación)
+
+## 1.1 Revisión de Modelos
+
+### Modelo OSI
+
+| Capa OSI | Función | Tecnologías |
+|----------|---------|-------------|
+| **7 - Aplicación** | Proporciona servicios de red a las aplicaciones del usuario, como videoconferencia. | Aplicaciones de videoconferencia (Zoom, Teams, Webex) |
+| **6 - Presentación** | Codifica, comprime y cifra los datos para la transmisión segura. | Códecs de video (H.264, H.265), TLS/SSL |
+| **5 - Sesión** | Gestiona la apertura, mantenimiento y cierre de sesiones de comunicación. | Protocolos SIP, H.323, WebRTC |
+| **4 - Transporte** | Garantiza la entrega de datos de extremo a extremo con TCP o UDP. | TCP y UDP |
+| **3 - Red** | Encamina los paquetes a través de la red usando direcciones IP. | IP, BGP, OSPF |
+| **2 - Enlace de Datos** | Controla el acceso al medio y corrige errores de transmisión. | Ethernet, VLANs, Wi-Fi |
+| **1 - Física** | Define los medios físicos de transmisión, como fibra óptica o cable Ethernet. | Fibra óptica, cables Ethernet, Wi-Fi 6 |
+
+---
+
+### Modelo TCP/IP
+
+| Capa TCP/IP | Función | Tecnologías |
+|-------------|---------|-------------|
+| **Aplicación** | Comunicación de video/audio. | SIP, H.323, WebRTC, TLS, SRTP |
+| **Transporte** | Maneja la confiabilidad del envío de datos mediante TCP o UDP. | TCP (señalización), UDP (video/audio en tiempo real) |
+| **Internet** | Direccionamiento y enrutamiento de paquetes. | IPv4, IPv6, QoS, VPNs |
+| **Acceso a Red** | Conectividad física y lógica. | Ethernet, Wi-Fi 6, VLANs, SD-WAN |
+
+
 ## 1.2 Diseño Lógico de la red
 ### Diagrama conceptual
 ```
