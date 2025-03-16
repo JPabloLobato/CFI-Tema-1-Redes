@@ -284,8 +284,8 @@ Para seleccionar la modulación más adecuada en la red, se han evaluado diferen
 ---
 
 ### **Conclusión**
-✅ La red implementará **PAM-4** en enlaces cableados (Ethernet y fibra óptica) para optimizar la transmisión de alta velocidad.  
-✅ **64-QAM** se usará en **Wi-Fi** para garantizar un rendimiento estable con el **SNR disponible**.
+La red implementará **PAM-4** en enlaces cableados (Ethernet y fibra óptica) para optimizar la transmisión de alta velocidad.  
+**64-QAM** se usará en **Wi-Fi** para garantizar un rendimiento estable con el **SNR disponible**.
 
 
 ## 3. Capa de Red – Direccionamiento y Enrutamiento
