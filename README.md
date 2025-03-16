@@ -1,7 +1,79 @@
 # CFI-Tema-1-Redes
 # Red del Sistema de Videoconferencia
 
-En esta imagen se muestra la red del sistema de videoconferencia que tendría un edificio modelo de la empresa, ajustable para cualquiera de sus tres sedes.  
+                    +----------------------+
+                    |    Protocolo MPLS    |
+                    +----------------------+
+                              |
+                              v
++------------------+        +------------------+
+|     Internet     | -----> |  Router ISR 4331 |
++------------------+        +------------------+
+                              |
+                              v
+                      +--------------------+
+                      | Firewall Perimetral|
+                      | Cisco Firepower1010|
+                      +--------------------+
+                              |
+                              v
+                      +-------------------+
+                      |  Switch Cisco     |
+                      |  3650-24PS (DMZ)  |
+                      +-------------------+
+                              |
+       --------------------------------------------------------------------------------------------------------
+       |                   |                 |                  |                   |                         |
+       v                   v                 v                  v                   v                         v                         
++----------------+  +----------------+  +--------------+  +--------------+   +------------------+     +----------------+
+| Servidor Correo|  | Servidor Proxy |  | Servidor DNS |  | Servidor DHCP|   | Servidores Video |     |  Servidor Web  |
++----------------+  +----------------+  +--------------+  +--------------+   |    Llamadas      |     +----------------+
+                                                                             +------------------+
+    
+
+                             |
+                             v
+              +----------------------------------+
+              |    Firewalls Internos           |
+              | +----------------------------+ |
+              | | Cisco Firepower 2140        | |
+              | | SonicWall TZ270W (backup)   | |
+              +--------------------------------+
+                              |
+                              v
+                    +-----------------+
+                    | Red Interna      |
+                    +-----------------+
+                              |
+                              v
++-----------------------------------------------------------------------------------------+
+|   Switch Central (Distribuye la conexión)                                               |
++-----------------------------------------------------------------------------------------+
+                            |                                                         |
+                            v                                                         |
++------------------------------------------------------------------+                  |
+|                     Switch  (Sala de servidores)                 |                  |
++------------------------------------------------------------------+                  |
+       |               |                        |               |                     |
+       v               v                        v               v                     |
++----------------+  +----------------+  +----------------+  +----------------+        |
+|  Servidor      |  |  Servidor       |  |  Servidor     |  |  Servidor      |        |
+|  Archivos      |  |  Administración |  |  Videoconf.   |  |  Monitoreo     |        |
++----------------+  +----------------+  +----------------+  +----------------+        v
++-------------------------------------------------------------------------------------------------------------------+       
+|       Switch (Red de Equipos por Plantas)                                                                         |
++-------------------------------------------------------------------------------------------------------------------+
+       |               |               |               |
+       v               v               v               v
++----------------+ +----------------+ +----------------+ +----------------+  +-----------------+  +-----------------+
+| Switch Planta 1| | Switch Planta 2| | Switch Planta 3| | Switch Planta 4|  | Switch Planta 5 |  | Switch Planta 6 |
++----------------+ +----------------+ +----------------+ +----------------+  +-----------------+  +-----------------+
+       |               |                   |                  |                      |                    |
+       v               v                   v                  v                      v                    v                      
+   (Dispositivos: PC, Cámaras, Proyectores, Altavoces, etc.)
+--------------------------------------------------------------------------------------------------------------------
+
+En esta diagrama se muestra la red del sistema de videoconferencia que tendría un edificio modelo de la empresa, ajustable para cualquiera de sus tres sedes.  
 
 Las sedes se conectan a través de Internet con el protocolo MPLS. En esta red, la entrada a Internet llega por un primer router Cisco ISR 4331, se filtra por un firewall perimetral Cisco Firepower 2140 que filtrar la mayor parte de los datos, después llega a un switch que conecta con los servidores de correo, proxy, DNS, DHCP, VoIP y web, todos estos servidores están la zona desmilitarizada (DMZ), obteniendo una mayor seguridad.  
 
