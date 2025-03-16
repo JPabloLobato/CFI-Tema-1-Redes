@@ -249,6 +249,44 @@ Con precio aproximado entre $0.25 - $1.00 USD por metro para el cableado Cat 6A 
 - Se protege en caso de interferencias electromagnéticas en redes de cobre tradicionales.  
 - Se evita pérdida de señal en largas distancias, solucionado con fibra óptica.
 
+## 2. Capa Física – Cálculos y Selección de Tecnologías
+## 2.1 Cálculo de la Tasa de Transmisión según la Fórmula de Shannon
+La capacidad máxima teórica del canal se obtiene con la fórmula:
+C = B × log2 (1+SNR)
+Donde:  
+- **B** = 500 MHz (Ancho de banda disponible para Cat 6A)  
+- **SNR** = 23 dB (Relación señal a ruido en decibeles)
+ 
+### Conversión de SNR de dB a escala lineal
+La conversión se realiza con la ecuación:
+SNR linear = 10^(23 /10) SNR linear = 10^(20/10) = 199.52
+
+### Cálculo de la tasa de transmisión **C**
+C = 500×10⁶ × log₂ (1+199.52) C ≈ 3.823 Gbps
+La tasa de transmisión máxima teórica según el teorema de Shannon es **3.823 Gbps**.
+
+---
+
+## 2.2 Selección de Modulación
+
+Para seleccionar la modulación más adecuada en la red, se han evaluado diferentes opciones considerando la eficiencia espectral y la robustez ante interferencias. Se han definido los siguientes tipos de enlaces:
+
+### **Enlaces Cableados (Ethernet y Fibra Óptica)**  
+- **Cableado Cat 6A (Ethernet, 10 Gbps)**: Se utiliza **PAM-4**, ya que permite transmitir 2 bits por símbolo, mejorando la eficiencia espectral sin aumentar la frecuencia de la señal.  
+- **Fibra Óptica**: Se emplea **PAM-4**, optimizando la transmisión en enlaces de alta velocidad (40/100 Gbps), permitiendo mayor capacidad con menor ancho de banda en comparación con **NRZ**.
+
+### **Enlaces Inalámbricos (Wi-Fi, Redes Celulares)**  
+- **Wi-Fi**: Se utiliza **64-QAM**, ya que con un **SNR de 23 dB** proporciona un equilibrio óptimo entre velocidad y resistencia a interferencias.  
+- **Alternativas**:  
+  - **16-QAM** en entornos con más ruido.  
+  - **256-QAM** descartado por requerir un **SNR superior a 30 dB**.  
+
+---
+
+### **Conclusión**
+✅ La red implementará **PAM-4** en enlaces cableados (Ethernet y fibra óptica) para optimizar la transmisión de alta velocidad.  
+✅ **64-QAM** se usará en **Wi-Fi** para garantizar un rendimiento estable con el **SNR disponible**.
+
 
 ## 3. Capa de Red – Direccionamiento y Enrutamiento
 
@@ -293,45 +331,6 @@ Con precio aproximado entre $0.25 - $1.00 USD por metro para el cableado Cat 6A 
 | VLAN80 | Servidores Int. | 192.168.21.192/24 | 255.255.255.0 | 254 | 192.168.21.193 |
 
 ---
-
-## 2. Capa Física – Cálculos y Selección de Tecnologías
-## 2.1 Cálculo de la Tasa de Transmisión según la Fórmula de Shannon
-La capacidad máxima teórica del canal se obtiene con la fórmula:
-C = B × log2 (1+SNR)
-Donde:  
-- **B** = 500 MHz (Ancho de banda disponible para Cat 6A)  
-- **SNR** = 23 dB (Relación señal a ruido en decibeles)
- 
-### Conversión de SNR de dB a escala lineal
-La conversión se realiza con la ecuación:
-SNR linear = 10^(23 /10) SNR linear = 10^(20/10) = 199.52
-
-### Cálculo de la tasa de transmisión **C**
-C = 500×10⁶ × log₂ (1+199.52) C ≈ 3.823 Gbps
-La tasa de transmisión máxima teórica según el teorema de Shannon es **3.823 Gbps**.
-
----
-
-## 2.2 Selección de Modulación
-
-Para seleccionar la modulación más adecuada en la red, se han evaluado diferentes opciones considerando la eficiencia espectral y la robustez ante interferencias. Se han definido los siguientes tipos de enlaces:
-
-### **Enlaces Cableados (Ethernet y Fibra Óptica)**  
-- **Cableado Cat 6A (Ethernet, 10 Gbps)**: Se utiliza **PAM-4**, ya que permite transmitir 2 bits por símbolo, mejorando la eficiencia espectral sin aumentar la frecuencia de la señal.  
-- **Fibra Óptica**: Se emplea **PAM-4**, optimizando la transmisión en enlaces de alta velocidad (40/100 Gbps), permitiendo mayor capacidad con menor ancho de banda en comparación con **NRZ**.
-
-### **Enlaces Inalámbricos (Wi-Fi, Redes Celulares)**  
-- **Wi-Fi**: Se utiliza **64-QAM**, ya que con un **SNR de 23 dB** proporciona un equilibrio óptimo entre velocidad y resistencia a interferencias.  
-- **Alternativas**:  
-  - **16-QAM** en entornos con más ruido.  
-  - **256-QAM** descartado por requerir un **SNR superior a 30 dB**.  
-
----
-
-### **Conclusión**
-✅ La red implementará **PAM-4** en enlaces cableados (Ethernet y fibra óptica) para optimizar la transmisión de alta velocidad.  
-✅ **64-QAM** se usará en **Wi-Fi** para garantizar un rendimiento estable con el **SNR disponible**.
-
 
 ### Sede 3 - 192.168.30.0/23
 
